@@ -32,19 +32,28 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/') }}" target="_blank" title="Перейти на сайт">
+                        <i class="fa fa-home"></i>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        <li>
+                          <a href="{{route('admin.index')}}">Панель состояния</a>
+                        </li>
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог<span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{{route('admin.category.index')}}">Категории</a></li>
-                            <li><a href="#">Материалы</a></li>
+                            <li><a href="{{route('admin.article.index')}}">Записи</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Управление пользователями<span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
                           </ul>
                         </li>
                     </ul>
@@ -85,6 +94,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

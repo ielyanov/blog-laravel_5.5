@@ -18,7 +18,7 @@
 
     {{-- Form include --}}
     @include('admin.categories.partials.form')
-    
+
   </form>
 </div>
 
