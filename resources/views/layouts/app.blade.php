@@ -14,12 +14,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        @include('layouts.header')
-
-        @yield('content')
-    </div>
     
+	@include('layouts.header')
+    @yield('content')
+    
+ 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('vendor/assets/js/custome.js') }}"></script>

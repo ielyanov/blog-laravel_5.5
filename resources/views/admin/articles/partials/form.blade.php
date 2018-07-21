@@ -23,6 +23,19 @@
   @include('admin.articles.partials.categories', ['categories' => $categories])
 </select>
 
+<label for="">Title для изображений</label>
+<input class="form-control" type="text" name="image_title" value="{{$image->title or ""}}" >
+
+<label for="">Изображение</label>
+<br/>
+@if (isset($image))
+	<img src="{{$image->miniature or $image->imgsrc}}" width="50px"> 
+	<input type="checkbox" name="deleteimg" id="deleteimg"> Удалить изображение<br/>
+	<hr>
+<label for="">Заменить изображение</label>	
+@endif
+<input type="file" name="images">
+
 </div>
 <div id="desc_panel" class="tab-pane fade">
 

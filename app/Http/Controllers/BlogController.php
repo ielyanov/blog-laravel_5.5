@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Article;
+use App\Image;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,13 +15,17 @@ class BlogController extends Controller
 
     	return view('blog.category', [
     		'category' => $category,
-    		'articles' => $category->articles()->where('published', 1)->paginate(12)
+    		'articles' => $category->articles()->where('published', 1)->paginate(9)
     	]);
     }
 
     public function article($slug) {
+		
+		$article = Article::where('slug', $slug)->first();
+			
     	return view('blog.article', [
-    		'article' => Article::where('slug', $slug)->first()
+    		'article' => $article,
+			'image'   => Image::where('article_id', $article->id)->get(['imgsrc','miniature','title'])->first()
     	]);
     }
 }

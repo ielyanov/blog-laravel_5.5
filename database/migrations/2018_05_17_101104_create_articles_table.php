@@ -12,15 +12,13 @@ class CreateArticlesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description_short')->nullable();
             $table->text('description');
-            $table->string('image')->nullable();
-            $table->boolean('image_show')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keyword')->nullable();

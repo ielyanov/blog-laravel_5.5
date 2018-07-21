@@ -9,6 +9,12 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h1>{{$article->title}}</h1>
+				@if (isset($image))
+	                <img src="{{$image->imgsrc}}" 
+				         alt="{{$image->title or $article->description_short}}"  
+						 width="400px" 
+						 title="{{$image->title or $article->description_short}}"><br/>
+	            @endif
 				<p>{!!$article->description!!}</p>
 			</div>
 		</div>

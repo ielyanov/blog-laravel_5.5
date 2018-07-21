@@ -16,7 +16,7 @@
     <li><a data-toggle="tab" href="#seo_panel">SEO поля</a></li>
   </ul>
 
-  <form class="form-horizontal" action="{{route('admin.article.store')}}" method="post">
+  <form class="form-horizontal" action="{{route('admin.article.store')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     {{-- Form include --}}

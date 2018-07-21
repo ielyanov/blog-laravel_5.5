@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://larablog'),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,7 +180,6 @@ return [
 		/*added packages*/
 		Unisharp\Ckeditor\ServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		Webelightdev\LaravelSlider\ImageSliderServiceProvider::class,
 		/*custom provider*/
 		App\Providers\BlogServiceProvider::class,
     ],
