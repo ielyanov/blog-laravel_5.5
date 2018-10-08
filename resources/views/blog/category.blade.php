@@ -21,7 +21,7 @@
 				<div class="col-sm-4">
 				    <a href="{{route('article', $article->slug)}}">
 					   <h2>{{$article->title}}</h2>
-					  @if ( !empty($imginfo = $article->getArticleImages($article->id)) )
+					  @if ( !empty($imginfo = $article->getArticleImages()) )
 	                    <img src="{{$imginfo->miniature}}" 
 				             alt="{{$imginfo->title or $article->description_short}}"  
 						     title="{{$imginfo->title or $article->description_short}}"><br/>

@@ -27,6 +27,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+		$validator = $request->validate([
+            'title' => 'required|string|max:255'
+        ]);
+
         return view('admin.categories.create', [
           'category'   => [],
           'categories' => Category::with('children')->where('parent_id', '0')->get(),
@@ -82,6 +86,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
+        $validator = $request->validate([
+            'title' => 'required|string|max:255'
+        ]);
+
         $category->update($request->except('slug'));
 
         return redirect()->route('admin.category.index');

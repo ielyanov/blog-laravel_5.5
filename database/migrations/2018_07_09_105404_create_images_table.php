@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
 			$table->string('imgsrc')->nullable();
 			$table->string('miniature')->nullable();
 			$table->string('title')->nullable();
-            $table->timestamps();
+			$table->timestamps();
         });
     }
 

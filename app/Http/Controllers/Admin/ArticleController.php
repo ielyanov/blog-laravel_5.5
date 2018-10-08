@@ -44,6 +44,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+		$validator = $request->validate([
+            'title' => 'required|string|max:255',
+			'description'       => 'required|string|min:6',
+            'image_title'       => 'string|max:255',
+			'meta_title'        => 'required|string|max:255', 
+        ]);
+		
         $article = Article::create($request->all());
 
         if($request->input('categories')) :
@@ -101,6 +108,13 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+		$validator = $request->validate([
+            'title' => 'required|string|max:255',
+			'description'       => 'required|string|min:6',
+            'image_title'       => 'string|max:255',
+			'meta_title'        => 'required|string|max:255', 
+        ]);
+		
         $article->update($request->except('slug'));
 
         $article->categories()->detach();
@@ -142,7 +156,12 @@ class ArticleController extends Controller
 
         return redirect()->route('admin.article.index');
     }
-	
+
+	/**
+	* Метод изменяет размер фотографий
+	* @param Название фото и размеры
+	* @return Путь до фото
+	*/
     public function resize($image, $w_o = 300, $h_o = 200) { 
 	
 	    $savepath = '/images/miniature/'.$w_o.'_'.$h_o.'_'.$image;	
@@ -158,10 +177,9 @@ class ArticleController extends Controller
         if($ext) { 
           $func = 'imagecreatefrom'.$ext; // Получаем название функции, соответствующую типу, для создания изображения 
           $img_i = $func($image); 
-        } 
-	
-        if (!$h_o) $h_o = $w_o / ($w_i / $h_i); 
-        if (!$w_o) $w_o = $h_o / ($h_i / $w_i); 
+        }else{
+          return false;
+		}
 	
         $img_o = imagecreatetruecolor($w_o, $h_o); 
         imagecopyresampled($img_o, $img_i, 0, 0, 0, 0, $w_o, $h_o, $w_i, $h_i); 

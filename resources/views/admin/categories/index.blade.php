@@ -29,8 +29,8 @@
               <input type="hidden" name="_method" value="DELETE">
               {{ csrf_field() }}
 
+              <a class="btn btn-default" href="{{route('category', $category->slug)}}" target="_blank" title="Просмотреть"><i class="fa fa-eye" aria-hidden="true"></i></a>
               <a class="btn btn-primary" href="{{route('admin.category.edit', $category)}}"><i class="fa fa-edit"></i></a>
-
               <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
             </form>
           </td>
